@@ -1,0 +1,39 @@
+UBUNTU SETUP
+
+1) Install OpenOffice:
+
+   sudo apt-get update
+   sudo apt-get install curl -y
+   curl -O http://ftp.osuosl.org/pub/openoffice/stable/3.1.0/OOo_3.1.0_LinuxX86-64_install_en-US_deb.tar.gz # [x86_64]
+   curl -O http://ftp.osuosl.org/pub/openoffice/stable/3.1.0/OOo_3.1.0_LinuxIntel_install_en-US_deb.tar.gz  # [i383/i686]
+   tar xzf [OOo_3.1.0_LinuxIntel_install_en-US_deb.tar.gz or downloaded filename]
+   cd OOO[tab]/DEBS
+   sudo dpkg -i *.deb
+   sudo apt-get install openoffice.org openoffice.org-headless -y
+
+2) Add /opt/openoffice.org3/program to your $PATH
+
+
+
+MAC OSX SETUP
+
+1) Download OpenOffice from the website and install into /Applications folder
+
+   Goto: http://download.openoffice.org/other.html
+
+2) Add /Applications/OpenOffice.org.app/Contents/MacOS to your $PATH
+
+
+
+CONVERSION ON EITHER PLATFORM
+
+
+3) Start OpenOffice headless process
+
+   soffice -headless -accept="socket,host=127.0.0.1,port=8100;urp;" -nofirststartwizard &
+
+4) From RAILS_ROOT, run a file through the jodconverter to convert to pdf:
+
+   java -jar ./vendor/jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar Resume.doc Resume.pdf
+
+
